@@ -1,45 +1,50 @@
 <template>
-  <button :class="classes" :disabled="disabled" type="button" @click="handleClick">
-    <slot/>
+  <button
+    :class="classes"
+    :disabled="disabled"
+    type="button"
+    @click="handleClick"
+  >
+    <slot />
   </button>
 </template>
 
 <script>
 export default {
-  name: "KbnButton",
+  name: 'KbnButton',
 
   props: {
     type: {
       type: String,
-      default: "button"
+      default: 'button'
     },
     disabled: {
       type: Boolean,
       default: false
     }
   },
+
   computed: {
-    // typeに応じてクラスを動的に生成する
-    classes() {
-      const cls = this.type === "text" ? "-" + this.type : "";
-      return [`kbn-button${cls}`];
+    // `type`に応じてクラスを動的に生成する
+    classes () {
+      const cls = this.type === 'text' ? ('-' + this.type) : ''
+      return [`kbn-button${cls}`]
     }
   },
 
   methods: {
-    // clickイベントを発行
-    handleClick(ev) {
-      this.$emit("click", ev);
+    // `click`イベントを発行
+    handleClick (ev) {
+      this.$emit('click', ev)
     }
   }
-};
+}
 </script>
 
-<style >
+<style scoped>
 .kbn-button {
-  padding: 0.6em 1.3em;
+  padding: .6em 1.3em;
 }
-
 .kbn-button-text {
   border: none;
   padding-right: 0;
